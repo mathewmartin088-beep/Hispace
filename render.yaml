@@ -1,0 +1,12 @@
+# Render.com blueprint for the FREE tier (no credit card, no persistent disk).
+# Render sets PORT automatically; the server already reads it. Data resets on
+# redeploys/long sleeps since the free tier has no persistent disk - fine for
+# testing, upgrade later (small paid disk, or a VPS) if you want it durable.
+services:
+  - type: web
+    name: hispace
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/ping
+    envVars:
+      - { key: TRUST_PROXY, value: "1" }

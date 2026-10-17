@@ -1,0 +1,19 @@
+# One command on any VPS:  docker compose up -d
+# Caddy gets a free HTTPS certificate automatically. Replace chat.example.com with your domain.
+services:
+  hispace:
+    build: .
+    restart: unless-stopped
+    volumes:
+      - hispace-data:/data
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports: ["80:80", "443:443"]
+    command: caddy reverse-proxy --from chat.example.com --to hispace:3000
+    volumes:
+      - caddy-data:/data
+    depends_on: [hispace]
+volumes:
+  hispace-data:
+  caddy-data:

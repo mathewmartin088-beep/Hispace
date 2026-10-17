@@ -1,0 +1,60 @@
+{
+  "name": "hispace",
+  "version": "3.0.0",
+  "description": "Hispace - chat and voice with friends",
+  "main": "electron/main.js",
+  "author": "Mathew",
+  "license": "ISC",
+  "scripts": {
+    "start": "electron .",
+    "server": "node server/index.js",
+    "dist": "electron-builder --win --x64",
+    "predist": "node build/set-server-url.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.1.0",
+    "@fontsource/figtree": "^5.1.0",
+    "electron": "^33.4.11",
+    "electron-builder": "^25.1.8",
+    "resedit": "^2.0.3",
+    "socket.io-client": "^4.8.4"
+  },
+  "build": {
+    "appId": "com.mathew.hispace",
+    "productName": "Hispace",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "electron/**",
+      "public/**",
+      "package.json"
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        "portable",
+        "zip"
+      ],
+      "icon": "build/icon.ico",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false,
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "shortcutName": "Hispace"
+    },
+    "portable": {
+      "artifactName": "Hispace-${version}-portable.exe"
+    },
+    "afterPack": "build/after-pack.js"
+  }
+}

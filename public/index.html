@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hispace</title>
+  <link rel="icon" href="icon.png">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="config.js"></script>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-hash" viewBox="0 0 24 24"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></symbol>
+      <symbol id="i-volume" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></symbol>
+      <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></symbol>
+      <symbol id="i-mic-off" viewBox="0 0 24 24"><line x1="1" y1="1" x2="23" y2="23"/><path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"/><path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.23"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></symbol>
+      <symbol id="i-headphones" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></symbol>
+      <symbol id="i-headphones-off" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 14.2-7.3M21 12v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/><line x1="1" y1="1" x2="23" y2="23"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+      <symbol id="i-settings" viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></symbol>
+      <symbol id="i-send" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></symbol>
+      <symbol id="i-reply" viewBox="0 0 24 24"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></symbol>
+      <symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></symbol>
+      <symbol id="i-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+      <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
+      <symbol id="i-hangup" viewBox="0 0 24 24"><path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-3.33-2.67m-2.67-3.34a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91"/><line x1="23" y1="1" x2="1" y2="23"/></symbol>
+      <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+      <symbol id="i-more" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+      <symbol id="i-arrow-down" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></symbol>
+      <symbol id="i-server" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol>
+          <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+      <symbol id="i-user-plus" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></symbol>
+    </defs>
+  </svg>
+
+  <div id="titlebar">
+    <div class="tb-brand"><img src="icon.png" alt="" width="16" height="16"><span>Hispace</span></div>
+  </div>
+
+  <!-- Connect + sign-in -->
+  <main id="gate" class="hidden">
+    <section class="hero">
+      <div class="wave" id="wave" aria-hidden="true"></div>
+      <h1 class="wordmark">hispace</h1>
+      <p class="tagline">Text and voice for your people. Your server, your data, no tracking.</p>
+    </section>
+
+    <section class="gate-card" id="connect-card">
+      <h2>Connect to Hispace</h2>
+      <form id="join-form">
+        <label for="join-addr">Server address</label>
+        <input id="join-addr" type="text" placeholder="chat.example.com" autocomplete="off" spellcheck="false">
+        <p class="hint">This is the address of the Hispace server your friends use. You only enter it once.</p>
+        <p class="form-error" id="join-error" role="alert"></p>
+        <button class="btn primary wide" type="submit">Connect</button>
+      </form>
+    </section>
+
+    <section class="gate-card hidden" id="auth-card">
+      <h2 id="auth-title">Welcome back</h2>
+      <div class="seg" role="tablist">
+        <button type="button" class="on" data-tab="login">Sign in</button>
+        <button type="button" data-tab="register">Create account</button>
+      </div>
+      <form id="auth-form" autocomplete="on">
+        <label for="auth-user">Username</label>
+        <input id="auth-user" name="username" type="text" autocomplete="username" maxlength="20" spellcheck="false">
+        <label for="auth-pass">Password</label>
+        <input id="auth-pass" name="password" type="password" autocomplete="current-password" maxlength="100">
+        <div id="confirm-row" class="hidden">
+          <label for="auth-pass2">Repeat password</label>
+          <input id="auth-pass2" type="password" autocomplete="new-password" maxlength="100">
+        </div>
+        <p class="form-error" id="auth-error" role="alert"></p>
+        <button class="btn primary wide" type="submit" id="auth-btn">Sign in</button>
+      </form>
+      <p class="server-line">Server <code id="auth-server"></code> <button type="button" class="link" id="auth-change">Change</button></p>
+    </section>
+  </main>
+
+  <!-- App -->
+  <div id="app" class="hidden">
+    <nav id="rail" aria-label="Servers">
+      <button class="rail-btn home" id="rail-home" title="Direct messages" aria-label="Direct messages"><svg class="icon"><use href="#i-message"/></svg></button>
+      <div class="rail-sep"></div>
+      <div id="server-list"></div>
+      <button class="rail-btn add" id="rail-add" title="Create or join a server" aria-label="Create or join a server"><svg class="icon"><use href="#i-plus"/></svg></button>
+    </nav>
+
+    <aside id="sidebar">
+      <header id="sb-head"></header>
+      <div id="sb-scroll"></div>
+      <div id="voice-bar" class="hidden"></div>
+      <div id="userbar"></div>
+    </aside>
+
+    <section id="main">
+      <header id="chat-head"></header>
+      <div id="call-strip" class="hidden"></div>
+      <div id="conn-banner" class="hidden" role="status"></div>
+      <div id="messages" tabindex="0"></div>
+      <button id="jump" class="hidden"><svg class="icon"><use href="#i-arrow-down"/></svg><span>New messages</span></button>
+      <div id="typing" aria-live="polite"></div>
+      <div id="composer"></div>
+    </section>
+
+    <aside id="members"></aside>
+    <div id="scrim" class="hidden"></div>
+  </div>
+
+  <div id="audio-sink" hidden></div>
+  <div id="layers"></div>
+  <div id="toasts" role="status" aria-live="polite"></div>
+
+  <script src="js/socket.io.min.js"></script>
+  <script src="js/sfx.js"></script>
+  <script src="js/voice.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/views.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
