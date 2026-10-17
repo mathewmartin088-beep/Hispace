@@ -24,3 +24,5 @@
 Paste it back here and I'll bake it into the Hispace app and rebuild the installer, so your friends just open the app and sign in — no address to type.
 
 **Note:** the free instance sleeps after 15 minutes with no traffic and takes about a minute to wake back up on the next request. Normal chat use will feel fine; the very first message after a quiet stretch will just be slow to arrive.
+
+**Voice calls between different networks:** the server automatically gets friends a free TURN relay (Open Relay Project) as a fallback when a direct connection can't be made, so voice should now work between two different homes/networks, not just on the same WiFi. No setup needed - it's built in.

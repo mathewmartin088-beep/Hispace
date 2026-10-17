@@ -273,9 +273,33 @@ function startServer({ port = 3000, dataDir, publicDir, host = '0.0.0.0' } = {})
     broadcastVoice(cid);
   }
 
+  // Short-lived TURN credentials for the Open Relay Project (metered.ca), their standard
+  // REST-API scheme: username is "<expiry-unix-time>", credential is base64(HMAC-SHA1(secret, username)).
+  // Published openly by them for free, low-volume use - https://www.metered.ca/tools/openrelay/
+  function openRelayTurn() {
+    const secret = 'openrelayprojectsecret';
+    const username = String(Math.floor(Date.now() / 1000) + 24 * 3600); // 24h-valid
+    const credential = crypto.createHmac('sha1', secret).update(username).digest('base64');
+    const host = 'staticauth.openrelay.metered.ca';
+    return [
+      { urls: `turn:${host}:80`, username, credential },
+      { urls: `turn:${host}:80?transport=tcp`, username, credential },
+      { urls: `turns:${host}:443?transport=tcp`, username, credential }
+    ];
+  }
+
   function iceServers() {
-    try { if (process.env.ICE_SERVERS) return JSON.parse(process.env.ICE_SERVERS); } catch (_) {}
-    return [{ urls: 'stun:stun.l.google.com:19302' }, { urls: 'stun:stun1.l.google.com:19302' }];
+    // A dedicated TURN server (ICE_SERVERS env var, JSON array) always wins if the host sets one.
+    if (process.env.ICE_SERVERS) {
+      try { return JSON.parse(process.env.ICE_SERVERS); } catch (err) { console.error('[hispace] ICE_SERVERS is not valid JSON, ignoring it:', err.message); }
+    }
+    // Otherwise: Google's public STUN (cheap NAT discovery) plus a free TURN relay as a fallback
+    // for the networks where a direct peer-to-peer path can't be found at all.
+    return [
+      { urls: 'stun:stun.l.google.com:19302' },
+      { urls: 'stun:stun1.l.google.com:19302' },
+      ...openRelayTurn()
+    ];
   }
 
   // ---------- Sockets ----------
